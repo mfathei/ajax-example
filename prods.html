@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            font-size: 16px;
+            color: brown;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<br><br>
+    ID: <span id="prodid"></span><br/>
+    productSKU: <span id="productSKU"></span><br/>
+    description: <span id="description"></span><br/>
+    price: <span id="price"></span><br/>
+    quantity: <span id="quantity"></span><br/>
+    width: <span id="width"></span><br/>
+    height: <span id="height"></span><br/>
+    length: <span id="length"></span><br/>
+    weight: <span id="weight"></span><br/>
+    <br>
+    <button type="button" id="button" onclick="getProductsJSON(getProductDetails)" >Show Product Details</button>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+    getProductDetails = function(product){
+        $("#prodid").html(product.id);
+        $("#productSKU").html(product.productSKU);
+        $("#description").html(product.description);
+        $("#price").html(product.price);
+        $("#quantity").html(product.quantity);
+        $("#width").html(product.width);
+        $("#height").html(product.height);
+        $("#length").html(product.length);
+        $("#weight").html(product.weight);
+    }
+
+    getProductsJSON = function(callback) {
+        var product = {};
+        $.ajax({
+            url: 'http://localhost:3000/products/1',
+            method: 'GET',
+            dataType: 'json',
+            success: function(response){
+                product = response;
+                console.log(response);
+            },
+            error: function(err){
+                console.error(err);
+            },
+            complete: function(){
+                callback(product);
+            }
+        });
+
+        return product;
+    }
+  </script>
+  
+</body>
+</html>

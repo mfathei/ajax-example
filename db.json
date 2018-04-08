@@ -1,0 +1,13 @@
+{
+    "products": [{
+        "id": 1,
+        "productSKU": "#50",
+        "description": "Product 1 description",
+        "price": 1500,
+        "quantity": 20,
+        "width": 33,
+        "height": 15,
+        "length": 120,
+        "weight": 4.7
+    }]
+}
